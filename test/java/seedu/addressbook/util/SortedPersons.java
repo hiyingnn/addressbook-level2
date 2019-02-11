@@ -1,16 +1,24 @@
 package seedu.addressbook.util;
 
-import seedu.addressbook.data.AddressBook;
-import seedu.addressbook.data.exception.IllegalValueException;
-import seedu.addressbook.data.person.*;
-import seedu.addressbook.data.tag.Tag;
-
 import java.util.Collections;
 
-public class TypicalPersonsVariedCase {
+import seedu.addressbook.data.AddressBook;
+import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.person.Address;
+import seedu.addressbook.data.person.Email;
+import seedu.addressbook.data.person.Name;
+import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.tag.Tag;
+
+/**
+ * Class to generate typical test persons
+ */
+public class SortedPersons {
+
     public Person amy, bill, candy, dan;
 
-    public TypicalPersonsVariedCase() {
+    public SortedPersons() {
         try {
             amy = new Person(new Name("Amy Buck"), new Phone("91119111", false), new Email("ab@gmail.com", false),
                     new Address("1 Clementi Road", false), Collections.emptySet());
@@ -28,7 +36,7 @@ public class TypicalPersonsVariedCase {
 
     private void loadAddressBookWithSampleData(AddressBook ab) {
         try {
-            for (Person p : this.getTypicalPersons()) {
+            for (Person p : this.getSortedPersons()) {
                 ab.addPerson(new Person(p));
             }
         } catch (IllegalValueException e) {
@@ -36,11 +44,11 @@ public class TypicalPersonsVariedCase {
         }
     }
 
-    public Person[] getTypicalPersons() {
-        return new Person[]{candy, bill, dan, amy};
+    public Person[] getSortedPersons() {
+        return new Person[]{amy, bill, candy, dan};
     }
 
-    public AddressBook getTypicalAddressBook() {
+    public AddressBook getSortedAddressBook() {
         AddressBook ab = new AddressBook();
         loadAddressBookWithSampleData(ab);
         return ab;
