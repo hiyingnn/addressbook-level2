@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
-
 
 
 /**
@@ -33,14 +33,16 @@ public class UniquePersonList implements Iterable<Person> {
      * Signals that an operation targeting a specified person in the list would fail because
      * there is no such matching person in the list.
      */
-    public static class PersonNotFoundException extends Exception {}
+    public static class PersonNotFoundException extends Exception {
+    }
 
     private final List<Person> internalList = new ArrayList<>();
 
     /**
      * Constructs empty person list.
      */
-    public UniquePersonList() {}
+    public UniquePersonList() {
+    }
 
     /**
      * Constructs a person list with the given persons.
@@ -55,6 +57,7 @@ public class UniquePersonList implements Iterable<Person> {
 
     /**
      * Constructs a list from the items in the given collection.
+     *
      * @param persons a collection of persons
      * @throws DuplicatePersonException if the {@code persons} contains duplicate persons
      */
@@ -100,8 +103,8 @@ public class UniquePersonList implements Iterable<Person> {
      * Adds a person to the list.
      *
      * @throws DuplicatePersonException if the person to add is a duplicate of an existing person in the list.
-     *    The @link{ReadOnlyPerson#isSamePerson} method is used for this comparison,
-     *    which defines a weaker notion of equality.
+     *                                  The @link{ReadOnlyPerson#isSamePerson} method is used for this comparison,
+     *                                  which defines a weaker notion of equality.
      */
     public void add(Person toAdd) throws DuplicatePersonException {
         if (contains(toAdd)) {
@@ -129,15 +132,32 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
+    /**
+     * Sorts all persons in list, alphabetically according to person's name
+     */
+
+    public void sort() {
+        List<Person> personsToSort = new ArrayList<>(internalList);
+        Collections.sort(personsToSort);
+        internalList.clear();
+        internalList.addAll(personsToSort);
+    }
+
+
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();
     }
 
     @Override
+    public void forEach(Consumer<? super Person> action) {
+
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniquePersonList // instanceof handles nulls
-                        && this.internalList.equals(((UniquePersonList) other).internalList));
+                && this.internalList.equals(((UniquePersonList) other).internalList));
     }
 }
