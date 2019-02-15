@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -147,11 +146,6 @@ public class UniquePersonList implements Iterable<Person> {
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super Person> action) {
-
     }
 
     @Override

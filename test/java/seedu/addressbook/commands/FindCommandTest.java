@@ -15,6 +15,10 @@ import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.util.TypicalPersons;
 
+/**
+ * Runs tests for FindCommand.
+ */
+
 public class FindCommandTest {
 
     private final AddressBook addressBook = new TypicalPersons().getTypicalAddressBook();
@@ -52,6 +56,12 @@ public class FindCommandTest {
 
         assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList), result.feedbackToUser);
     }
+
+    /**
+     * Creates the find command.
+     * @param keywords
+     * @return
+     */
 
     private FindCommand createFindCommand(String[] keywords) {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));

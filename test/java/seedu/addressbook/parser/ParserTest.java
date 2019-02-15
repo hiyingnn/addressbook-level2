@@ -32,6 +32,9 @@ import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
 
+/**
+ * Runs test for Parser.
+ */
 public class ParserTest {
 
     private Parser parser;
@@ -268,6 +271,10 @@ public class ParserTest {
         assertEquals(result.getPerson(), testPerson);
     }
 
+    /**
+     * Generates test for person by insertng example credentials.
+     * @return
+     */
     private static Person generateTestPerson() {
         try {
             return new Person(
@@ -281,6 +288,12 @@ public class ParserTest {
             throw new RuntimeException("test person data should be valid by definition");
         }
     }
+
+    /**
+     * Convert person to command string.
+     * @param person
+     * @return
+     */
 
     private static String convertPersonToAddCommandString(ReadOnlyPerson person) {
         String addCommand = "add "
