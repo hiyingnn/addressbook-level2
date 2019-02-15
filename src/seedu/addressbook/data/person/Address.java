@@ -41,7 +41,7 @@ public class Address implements Printable {
      * @return value
      */
     public String getPrintableString() {
-        return value;
+        return "Value: " + value;
     }
 
     @Override

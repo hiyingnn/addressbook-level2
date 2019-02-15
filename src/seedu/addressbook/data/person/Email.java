@@ -42,7 +42,7 @@ public class Email implements Printable {
      * @return value
      */
     public String getPrintableString() {
-        return value;
+        return "Email: " + value;
     }
 
     @Override
