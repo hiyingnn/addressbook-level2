@@ -21,6 +21,10 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.ui.TextUi;
 import seedu.addressbook.util.TestUtil;
 
+/**
+ * Runs tests for DeleteCommand.
+ */
+
 public class DeleteCommandTest {
 
     private AddressBook emptyAddressBook;

@@ -148,6 +148,20 @@
   clear
   list
 
+
+##########################################################
+# test sort command
+##########################################################
+
+    # sort
+    add peter Chow p/9999 e/pchow@gmail.com a/Disney World
+    add Anabelle p/9404 e/ak@gmail.com a/Anabella World
+    add Zandy tan p/9493 e/ajnd@gmail.com a/Zandy World 23
+    list
+    sort
+    list
+
+
 ##########################################################
 # test exit command
 ##########################################################

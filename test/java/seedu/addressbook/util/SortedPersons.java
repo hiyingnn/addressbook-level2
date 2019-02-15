@@ -14,19 +14,19 @@ import seedu.addressbook.data.tag.Tag;
 /**
  * Class to generate typical test persons
  */
-public class TypicalPersons {
+public class SortedPersons {
 
     public Person amy, bill, candy, dan;
 
-    public TypicalPersons() {
+    public SortedPersons() {
         try {
             amy = new Person(new Name("Amy Buck"), new Phone("91119111", false), new Email("ab@gmail.com", false),
                     new Address("1 Clementi Road", false), Collections.emptySet());
-            bill = new Person(new Name("Bill Clint"), new Phone("92229222", false), new Email("bc@gmail.com", false),
+            bill = new Person(new Name("bill Clint"), new Phone("92229222", false), new Email("bc@gmail.com", false),
                     new Address("2 Clementi Road", true), Collections.emptySet());
             candy = new Person(new Name("Candy Destiny"), new Phone("93339333", true),
                     new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), Collections.emptySet());
-            dan = new Person(new Name("Dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
+            dan = new Person(new Name("dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
                     new Address("NUS", true), Collections.singleton(new Tag("test")));
         } catch (IllegalValueException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class TypicalPersons {
 
     private void loadAddressBookWithSampleData(AddressBook ab) {
         try {
-            for (Person p : this.getTypicalPersons()) {
+            for (Person p : this.getSortedPersons()) {
                 ab.addPerson(new Person(p));
             }
         } catch (IllegalValueException e) {
@@ -44,11 +44,11 @@ public class TypicalPersons {
         }
     }
 
-    public Person[] getTypicalPersons() {
-        return new Person[]{candy, dan, amy, bill};
+    public Person[] getSortedPersons() {
+        return new Person[]{amy, bill, candy, dan};
     }
 
-    public AddressBook getTypicalAddressBook() {
+    public AddressBook getSortedAddressBook() {
         AddressBook ab = new AddressBook();
         loadAddressBookWithSampleData(ab);
         return ab;
