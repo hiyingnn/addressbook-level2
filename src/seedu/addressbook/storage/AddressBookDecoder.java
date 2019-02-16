@@ -26,6 +26,7 @@ import seedu.addressbook.storage.StorageFile.StorageOperationException;
 public class AddressBookDecoder {
 
     private static int existingPersonsCount = 0;
+
     /**
      * Decodes {@code encodedAddressBook} into an {@code AddressBook} containing the decoded persons.
      *
