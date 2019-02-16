@@ -31,6 +31,8 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    private static int addCommandCount;
+
 
     /**
      * Signals that the user input could not be parsed.
@@ -108,6 +110,7 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
         try {
+            addCommandCount++;
             return new AddCommand(
                     matcher.group("name"),
 
@@ -120,7 +123,7 @@ public class Parser {
                     matcher.group("address"),
                     isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
 
-                    getTagsFromArgs(matcher.group("tagArguments"))
+                    getTagsFromArgs(matcher.group("tagArguments")), addCommandCount
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
