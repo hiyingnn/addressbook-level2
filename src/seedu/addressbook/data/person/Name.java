@@ -51,6 +51,17 @@ public class Name implements Printable{
         return "Name: " + fullName;
     }
 
+    /**
+     * Returns true if the other name is very similar to this name.
+     * Two names are considered similar if
+     *     1. the names are sequenced in a different order
+     *     2. the names are in different case
+     *     3. the name is a subset of the other name
+     */
+    public boolean isSimilar(Name other) {
+        return true;
+    }
+
     @Override
     public String toString() {
         return fullName;
