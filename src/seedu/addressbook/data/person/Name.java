@@ -56,7 +56,7 @@ public class Name implements Printable{
      * Two names are considered similar if
      *     1. the names are sequenced in a different order
      *     2. the names are in different case
-     *     3. the name is a subset of the other name
+     *
      */
     public boolean isSimilar(Name other) {
         boolean checkCase = fullName.equalsIgnoreCase(other.toString());
@@ -78,7 +78,7 @@ public class Name implements Printable{
         }
 
 
-        return checkCase || checkSequence;
+        return (checkCase || checkSequence);
     }
 
     @Override
