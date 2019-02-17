@@ -9,7 +9,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
  * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
-public class Name {
+public class Name implements Printable{
 
     public static final String EXAMPLE = "John Doe";
     public static final String MESSAGE_NAME_CONSTRAINTS = "Person names should be spaces or alphabetic characters";
@@ -41,6 +41,44 @@ public class Name {
      */
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.split("\\s+"));
+    }
+
+    /**
+     * Returns printable name.
+     * @return value
+     */
+    public String getPrintableString() {
+        return "Name: " + fullName;
+    }
+
+    /**
+     * Returns true if the other name is very similar to this name.
+     * Two names are considered similar if
+     *     1. the names are sequenced in a different order
+     *     2. the names are in different case
+     *
+     */
+    public boolean isSimilar(Name other) {
+        boolean checkCase = fullName.equalsIgnoreCase(other.toString());
+        List<String> wordsInName = getWordsInName();
+        List<String> otherWordsInName = other.getWordsInName();
+
+        boolean[] checkSequenceBoolArray = new boolean[wordsInName.size()];
+        boolean checkSequence = true;
+
+        for(int i = 0; i < wordsInName.size(); i++) {
+            boolean containsInOtherWord = otherWordsInName.contains(wordsInName.get(i));
+            checkSequenceBoolArray[i] = containsInOtherWord;
+        }
+
+        for(int j = 0; j < checkSequenceBoolArray.length; j++) {
+            if(!checkSequenceBoolArray[j]) {
+                checkSequence = false;
+            }
+        }
+
+
+        return (checkCase || checkSequence);
     }
 
     @Override

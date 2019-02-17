@@ -16,6 +16,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     private Phone phone;
     private Email email;
     private Address address;
+    private static int nextSequenceNumber;
 
     private final Set<Tag> tags = new HashSet<>();
 
@@ -28,6 +29,7 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.nextSequenceNumber++;
     }
 
     /**

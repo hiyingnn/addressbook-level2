@@ -292,7 +292,7 @@ public class ParserTest {
     /**
      * Convert person to command string.
      * @param person
-     * @return
+     * @return addCommand the actual command stringed.
      */
 
     private static String convertPersonToAddCommandString(ReadOnlyPerson person) {
