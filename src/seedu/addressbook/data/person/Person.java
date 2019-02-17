@@ -17,29 +17,26 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     private Email email;
     private Address address;
     private static int nextSequenceNumber;
-    private static int basePersonsCount = 0;
-    private int sequenceNumber;
 
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Assumption: Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, int addCommandCount) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
         this.nextSequenceNumber++;
-        this.sequenceNumber = addCommandCount + basePersonsCount;
     }
 
     /**
      * Copy constructor.
      */
     public Person(ReadOnlyPerson source) {
-        this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getTags(), source.getNextSequenceNumber());
+        this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getTags());
     }
 
     @Override
@@ -67,27 +64,12 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
         return new HashSet<>(tags);
     }
 
-    @Override
-    public int getNextSequenceNumber() {
-        return nextSequenceNumber;
-    }
-
     /**
      * Replaces this person's tags with the tags in the argument tag set.
      */
     public void setTags(Set<Tag> replacement) {
         tags.clear();
         tags.addAll(replacement);
-    }
-
-    /**
-     * Sets the last id of the person in the existing addressbook. After reloading Addressbook from txt file.
-     *
-     * @param existingPersonsCount
-     */
-
-    public void setBasePersonsCount(int existingPersonsCount) {
-        basePersonsCount = existingPersonsCount;
     }
 
     @Override

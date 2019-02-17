@@ -59,7 +59,8 @@ public class Name implements Printable{
      *     3. the name is a subset of the other name
      */
     public boolean isSimilar(Name other) {
-        return true;
+        boolean checkCase = fullName.equalsIgnoreCase(other.toString());
+        return checkCase;
     }
 
     @Override
