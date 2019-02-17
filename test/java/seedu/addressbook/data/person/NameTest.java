@@ -6,13 +6,20 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 
 public class NameTest {
 
     @Test
     public void isSimilar_nullName_throwsException() {
-
+        try {
+            Name nullName = new Name("");
+        } catch(IllegalValueException ive) {
+            return;
+        }
+        String error = String.format("Name was constructed with invalid input");
+        fail(error);
     }
 
     @Test
@@ -28,6 +35,18 @@ public class NameTest {
             assertTrue(nameVariedCaps.isSimilar(nameSmallCaps));
             assertFalse(nameVariedCaps.isSimilar(otherName));
         } catch (IllegalValueException ive) {
+            return;
+        }
+    }
+
+    @Test
+    public void isSimilar_differentOrder_correctlyReturned() {
+        try {
+            Name diffOrder = new Name ("Sam Smith");
+            Name diffOrder1 = new Name("Smith Sam");
+
+            assertTrue(diffOrder.isSimilar(diffOrder1));
+        } catch(IllegalValueException ive) {
             return;
         }
     }
