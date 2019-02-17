@@ -60,7 +60,25 @@ public class Name implements Printable{
      */
     public boolean isSimilar(Name other) {
         boolean checkCase = fullName.equalsIgnoreCase(other.toString());
-        return checkCase;
+        List<String> wordsInName = getWordsInName();
+        List<String> otherWordsInName = other.getWordsInName();
+
+        boolean[] checkSequenceBoolArray = new boolean[wordsInName.size()];
+        boolean checkSequence = true;
+
+        for(int i = 0; i < wordsInName.size(); i++) {
+            boolean containsInOtherWord = otherWordsInName.contains(wordsInName.get(i));
+            checkSequenceBoolArray[i] = containsInOtherWord;
+        }
+
+        for(int j = 0; j < checkSequenceBoolArray.length; j++) {
+            if(!checkSequenceBoolArray[j]) {
+                checkSequence = false;
+            }
+        }
+
+
+        return checkCase || checkSequence;
     }
 
     @Override

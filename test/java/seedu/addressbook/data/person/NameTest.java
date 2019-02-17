@@ -43,9 +43,10 @@ public class NameTest {
     public void isSimilar_differentOrder_correctlyReturned() {
         try {
             Name diffOrder = new Name ("Sam Smith");
-            Name diffOrder1 = new Name("Smith Sam");
-
-            assertTrue(diffOrder.isSimilar(diffOrder1));
+            Name otherDiffOrder = new Name("Smith Sam");
+            Name diffName = new Name("Smoth Sam");
+            assertTrue(diffOrder.isSimilar(otherDiffOrder));
+            assertFalse(diffName.isSimilar(diffOrder));
         } catch(IllegalValueException ive) {
             return;
         }
